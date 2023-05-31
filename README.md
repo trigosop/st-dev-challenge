@@ -1,2 +1,1 @@
-# st-dev-challenge
-Challenge developed in Shopify Liquid
+# shopify-dev-challenge

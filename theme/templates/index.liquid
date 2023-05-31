@@ -1,0 +1,50 @@
+<div class="container mx-auto">
+  <h1 class="bg-orange-300 p-3">TABS</h1>
+
+  <div class="flex flex-nowrap bg-orange-500">
+    <div data-tab-target="#tab01" class="p-3 hover:bg-gray-300 cursor-pointer bg-orange-400 tab">Tab 01</div>
+    <div data-tab-target="#tab02" class="p-3 hover:bg-gray-300 cursor-pointer tab"> Tab02</div>
+    <div data-tab-target="#tab03" class="p-3 hover:bg-gray-300 cursor-pointer tab"> Tab 03</div>
+  </div>
+
+
+  <div class="tab-content ml-4 mr-4">
+    <div id="tab01" data-tab-content class="block">
+      <h2 class="p-3">Title Tab 01</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras enim dolor, rutrum ut viverra ultricies, posuere iaculis mi. Fusce non pretium sapien. Ut quis neque elementum, efficitur augue et, fringilla tortor. Vivamus id leo vel enim porta egestas id in ipsum. Proin nunc ante, efficitur vel convallis et, finibus sed orci. Sed id metus vel libero congue consequat. Nam auctor efficitur elit, vel blandit tellus fringilla ac. Sed in accus vitae, iaculis non diam. Etiam sit amet placerat urna. Vestibulum eleifend sagittis metus.</p>
+    </div>
+    <div id="tab02" data-tab-content class="hidden">
+      <h2 class="p-3">Title Tab 02</h2>
+      <p>Suspendisse consectetur, mi et tempus euismod, nunc enim maximus lacus, eget tincidunt dolor felis efficitur orci. Vivamus sem dolor, ullamcorper ut tempor at, suscipit quis lacus. Phasellus est justo, tincidunt aliquet rutrum ut, malesuada ut enim. Sed consequat cursus magna quis mollis. Duis tincidunt pulvinar velit nec faucibus. Nulla vulputate metus velit. In rutrum vitae augue sed consequat. Donec at tincidunt odio. Donec varius sodales nunc, non accumsan sapien semper sed.</p>
+    </div>
+    <div id="tab03" data-tab-content class="hidden">
+      <h2 class="p-3">Title Tab 03</h2>
+      <p>Aliquam scelerisque sollicitudin felis vitae convallis. Nulla facilisi. Aliquam erat volutpat. Nullam vitae pulvinar dolor. Nulla viverra mi eget lacus pretium pretium. In hac habitasse platea dictumst. Pellentesque laoreet ante in faucibus suscipit. Duis vestibulum tellus sed nulla scelerisque venenatis sit amet et tortor.</p>
+    </div>
+  </div>
+  
+</div>
+
+
+<script>
+
+  const tabs = document.querySelectorAll('[data-tab-target]')
+  const tabContents = document.querySelectorAll('[data-tab-content]')
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.querySelector(tab.dataset.tabTarget)
+      tabContents.forEach(tabContent => {
+        tabContent.classList.remove('block')
+        tabContent.classList.add('hidden')
+      })
+      tabs.forEach(tab => {
+        tab.classList.remove('bg-orange-400')
+      })
+      tab.classList.add('bg-orange-400')
+      target.classList.add('block')
+      target.classList.remove('hidden')
+    })
+  })
+  
+</script>
