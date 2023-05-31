@@ -1,0 +1,102 @@
+<div class="container mx-auto">
+    <h1 class="bg-orange-300 p-3">{{ section.settings.title }}</h1>
+  
+    <div class="flex flex-nowrap bg-orange-500">
+
+        {% for block in section.blocks %}
+
+        <div data-tab-target="tab0{{ forloop.index }}" class="{% if forloop.first == true %} bg-orange-400 {% endif %} p-3 hover:bg-gray-300 cursor-pointer tab">
+            <h3>{{ block.settings.tab_title }}</h3>
+        </div>
+
+        {% endfor %}
+
+    </div>
+  
+  
+    <div class="tab-content ml-4 mr-4">
+
+        {% for block in section.blocks %}
+
+            <div id="tab0{{ forloop.index }}" data-tab-content class="{% if forloop.first == true %} block {% else %} hidden {% endif %}" style="color: {{ section.settings.text_color }};">
+                {{ block.settings.tab_content }}
+            </div>
+
+        {% endfor %}
+
+    </div>
+    
+  </div>
+
+<script>
+
+const tabs = document.querySelectorAll('[data-tab-target]')
+const tabContents = document.querySelectorAll('[data-tab-content]')
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+
+    const target = document.querySelector(`#${tab.dataset.tabTarget}`)
+
+    tabContents.forEach(tabContent => {
+        tabContent.classList.remove('block')
+        tabContent.classList.add('hidden')
+    })
+    tabs.forEach(tab => {
+        tab.classList.remove('bg-orange-400')
+    })
+    tab.classList.add('bg-orange-400')
+    target.classList.add('block')
+    target.classList.remove('hidden')
+    })
+})
+
+</script>
+
+
+{% schema %}
+{
+    "name": "Tab Section",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Tab Title",
+            "default": "TABS"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Tab",
+            "type": "tab",
+            "settings": [
+                {
+                "type": "text",
+                "id": "tab_title",
+                "label": "Tab Title",
+                "default": "Tab"
+                },
+                {
+                "type": "richtext",
+                "id": "tab_content",
+                "label": "Tab Content"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+      "name": "Tabs"
+    }
+  ]
+}
+{% endschema %}
+  

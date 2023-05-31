@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "tabs": {
+      "type": "tabs",
+      "blocks": {
+        "2a312666-6151-42e2-94ef-b35a0f249d6b": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tab01",
+            "tab_content": "<p>01</p>"
+          }
+        },
+        "41dec6e5-2785-42ae-8527-202675aaa89d": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tab02",
+            "tab_content": "<p>02</p>"
+          }
+        }
+      },
+      "block_order": [
+        "2a312666-6151-42e2-94ef-b35a0f249d6b",
+        "41dec6e5-2785-42ae-8527-202675aaa89d"
+      ],
+      "settings": {
+        "title": "PEPE",
+        "text_color": "#52ba37"
+      }
+    }
+  },
+  "order": ["tabs"]
+}

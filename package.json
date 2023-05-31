@@ -6,7 +6,8 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "deploy": "npx tailwindcss build css/application.css -o theme/assets/application.css.liquid && shopify theme push",
     "deploynew": "shopify theme push --unpublished && npx tailwindcss build css/application.css -o theme/assets/application.css.liquid",
-    "start": "shopify theme dev && npx tailwindcss build css/application.css -o theme/assets/application.css.liquid"
+    "start": "cd ./theme && shopify theme dev && shopify theme dev --theme-editor-sync && npx tailwindcss build css/application.css -o theme/assets/application.css.liquid",
+    "pull": "cd ./theme && shopify theme pull"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
